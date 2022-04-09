@@ -20,26 +20,29 @@
           width="100"
         />
       </div>
-          <span class="ml-10" style="font-family:gabriola; font-size:20px" > Seu Aplicativo de Gestão Financeira </span>   
-       </v-app-bar>
+      <span class="ml-10" style="font-family: gabriola; font-size: 20px">
+        Seu Aplicativo de Gestão Financeira
+      </span>
+    </v-app-bar>
 
     <v-main>
-      <Login/>
-      <Cadastro/>
+      <PaginaLogin />
+      <!-- <PaginaCadastro /> -->
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Login from "@components/Login.vue";
-import Cadastro from "@components/Cadastro.vue";
+/* eslint-disable */
 
+import PaginaLogin from "@/components/PaginaLogin.vue";
+import PaginaCadastro from "@/components/PaginaCadastro.vue";
 export default {
   name: "App",
 
   components: {
-    Login,
-    Cadastro
+    PaginaLogin,
+    PaginaCadastro,
   },
 
   data: () => ({
