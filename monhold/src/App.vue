@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
+    <v-app-bar app color="pink" dark>
       <div class="d-flex align-center">
         <v-img
           alt="Vuetify Logo"
@@ -20,31 +20,26 @@
           width="100"
         />
       </div>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+          <span class="ml-10" style="font-family:gabriola; font-size:20px" > Seu Aplicativo de Gestão Financeira </span>   
+       </v-app-bar>
 
     <v-main>
-      <HelloWorld />
+      <Login/>
+      <Cadastro/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Login from "@components/Login.vue";
+import Cadastro from "@components/Cadastro.vue";
 
 export default {
   name: "App",
 
   components: {
-    HelloWorld,
+    Login,
+    Cadastro
   },
 
   data: () => ({
