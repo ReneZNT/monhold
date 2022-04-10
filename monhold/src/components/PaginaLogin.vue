@@ -7,7 +7,7 @@
             <v-text-field
               v-model="email"
               :rules="[() => !!name || 'Campo obrigatório']"
-              :error-messages="errorMessages"
+              
               label="Digite seu e-mail"
               placeholder="usuario@gmail.com.br"
               required
@@ -19,8 +19,7 @@
                 () =>
                   (!!senha && senha.length <= 20) ||
                   'Sua senha deve conter no máximo 20 caracteres ',
-                addressCheck,
-              ]"
+                ]"
               label="Senha"
               type="password"
               placeholder="********"
@@ -30,13 +29,13 @@
           </v-card-text>
         </v-card>
         <div class="mt-10 d-flex px-10">
-          <v-btn class="px-9 py-6"> cancelar </v-btn>
+          <v-btn class="px-9 py-6" dark> cadastrar </v-btn>
           <v-spacer />
-          <v-btn class="px-9 py-6"> proximo </v-btn>
+          <v-btn class="px-9 py-6" dark> proximo </v-btn>
         </div>
       </div>
     </v-container>
-    <v-footer dark> testandooooooooo </v-footer>
+
   </div>
 </template>
 

@@ -1,24 +1,11 @@
 <template>
   <v-app>
-    <v-app-bar app color="pink" dark>
+    <v-app-bar app dark>
       <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+        <h1 class=" green--text">
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
+          Monhold
+        </h1>
       </div>
       <span class="ml-10" style="font-family: gabriola; font-size: 20px">
         Seu Aplicativo de Gestão Financeira
@@ -29,6 +16,7 @@
       <PaginaLogin />
       <!-- <PaginaCadastro /> -->
     </v-main>
+        <v-footer dark> testandooooooooo </v-footer>
   </v-app>
 </template>
 
