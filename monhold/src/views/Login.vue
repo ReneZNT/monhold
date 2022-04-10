@@ -1,12 +1,12 @@
 <template>
-  <div class="fill-height imagem-fundo">
+  <div class="fill-height imagem-fundo" style="background-color: #2f2f2f">
     <v-container class="fill-height d-flex justify-center">
       <div>
         <v-card class="elevation-22 py-8" dark style="width: 420px" ref="form">
           <v-card-text>
             <v-text-field
               v-model="email"
-              :rules="[() => !!name || 'Campo obrigatório']"
+              :rules="[() => !!email || 'Campo obrigatório']"
               label="Digite seu e-mail"
               placeholder="usuario@gmail.com.br"
               required
@@ -28,7 +28,9 @@
           </v-card-text>
         </v-card>
         <div class="mt-10 d-flex px-10">
-          <v-btn class="px-9 py-6" dark width="150px"> Cadastrar </v-btn>
+          <v-btn class="px-9 py-6" dark width="150px" to="/cadastro">
+            Cadastrar
+          </v-btn>
           <v-spacer />
           <v-btn class="px-9 py-6" dark width="150px"> Entrar </v-btn>
         </div>
@@ -40,10 +42,3 @@
 <script>
 export default {};
 </script>
-
-<style>
-.imagem-fundo {
-  background: url("../assets/fundo.png") no-repeat center top fixed;
-  background-size: cover !important;
-}
-</style>

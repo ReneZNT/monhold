@@ -10,9 +10,24 @@
 
       <v-spacer />
 
-      <v-btn class="mr-2" to="/" tile text>Login</v-btn>
-      <v-btn to="/cadastro" tile text>Cadastro</v-btn>
-      <v-btn to="/app" tile text>App</v-btn>
+      <v-btn v-show="$route.name != 'app'" to="/" class="mr-1" tile text>
+        Login
+      </v-btn>
+      <v-btn
+        v-show="$route.name != 'app'"
+        to="/cadastro"
+        class="mr-1"
+        tile
+        text
+      >
+        Cadastro
+      </v-btn>
+      <v-btn v-show="$route.name != 'app'" to="/app" class="mr-1" tile text>
+        App
+      </v-btn>
+      <v-btn v-show="$route.name == 'app'" to="/" text tile>
+        <v-icon>mdi-exit-to-app</v-icon>
+      </v-btn>
     </v-app-bar>
     <v-main>
       <router-view />
@@ -23,25 +38,24 @@
   </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<style>
+body,
+html {
+  overflow: auto;
+}
+.v-application,
+.v-application [class*="text-"] {
+  font-family: "Montserrat" !important;
+  /*Essa fonte foi importada no arquivo index.html que fica na pasta public (linha 12 >Nesse momento<)*/
 }
 
-nav {
-  padding: 30px;
+.imagem-fundo {
+  background: url("./assets/fundo.png") no-repeat center top fixed;
+  background-size: cover !important;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+.imagem-fundo-app {
+  background: url("./assets/fundo-app.png") no-repeat center top fixed;
+  background-size: cover !important;
 }
 </style>

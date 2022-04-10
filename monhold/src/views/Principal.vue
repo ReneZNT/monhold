@@ -4,6 +4,7 @@
     class="fill-height imagem-fundo-app"
     style="background-color: #2f2f2f"
   >
+    asdsada
   </v-container>
 </template>
 
@@ -23,11 +24,3 @@ export default {
   },
 };
 </script>
-
-
-<style>
-.imagem-fundo-app {
-  background: url("../assets/fundo-app.png") no-repeat center top fixed;
-  background-size: cover !important;
-}
-</style>
