@@ -1,5 +1,5 @@
 <template>
-  <div fluid class="fill-height" style="background-color: black">
+  <div fluid class="fill-height" style="background: url('/assets/fundo.png') no-repeat center center fixed !important;">
     <v-container class="fill-height d-flex justify-center">
       <div>
         <v-card class="elevation-22 py-8" dark style="width: 420px" ref="form">
@@ -29,9 +29,9 @@
           </v-card-text>
         </v-card>
         <div class="mt-10 d-flex px-10">
-          <v-btn class="px-9 py-6" dark> cadastrar </v-btn>
+          <v-btn class="px-9 py-6" dark width="150px" > cadastrar </v-btn>
           <v-spacer />
-          <v-btn class="px-9 py-6" dark> proximo </v-btn>
+          <v-btn class="px-9 py-6" dark width="150px" > proximo </v-btn>
         </div>
       </div>
     </v-container>
