@@ -2,21 +2,20 @@
   <v-app>
     <v-app-bar app dark>
       <div class="d-flex align-center">
-        <h1 class=" green--text">
-
-          Monhold
-        </h1>
+        <h1><b class="green--text">Mon</b><b class="white--text">Hold</b></h1>
+        <span class="ml-8 pt-1" style="font-family: gabriola; font-size: 20px">
+          Seu Aplicativo de Gestão Financeira
+        </span>
       </div>
-      <span class="ml-10" style="font-family: gabriola; font-size: 20px">
-        Seu Aplicativo de Gestão Financeira
-      </span>
     </v-app-bar>
 
     <v-main>
-      <PaginaLogin />
-      <!-- <PaginaCadastro /> -->
+      <!-- <PaginaLogin /> -->
+      <PaginaCadastro />
     </v-main>
-        <v-footer dark> testandooooooooo </v-footer>
+    <v-footer dark class="justify-center py-2 caption"
+      ><span>MonHold - 2022</span></v-footer
+    >
   </v-app>
 </template>
 

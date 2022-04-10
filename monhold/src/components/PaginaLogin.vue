@@ -1,5 +1,5 @@
 <template>
-  <div fluid class="fill-height" style="background: url('/assets/fundo.png') no-repeat center center fixed !important;">
+  <div class="fill-height imagem-fundo">
     <v-container class="fill-height d-flex justify-center">
       <div>
         <v-card class="elevation-22 py-8" dark style="width: 420px" ref="form">
@@ -7,7 +7,6 @@
             <v-text-field
               v-model="email"
               :rules="[() => !!name || 'Campo obrigatório']"
-              
               label="Digite seu e-mail"
               placeholder="usuario@gmail.com.br"
               required
@@ -19,7 +18,7 @@
                 () =>
                   (!!senha && senha.length <= 20) ||
                   'Sua senha deve conter no máximo 20 caracteres ',
-                ]"
+              ]"
               label="Senha"
               type="password"
               placeholder="********"
@@ -29,16 +28,22 @@
           </v-card-text>
         </v-card>
         <div class="mt-10 d-flex px-10">
-          <v-btn class="px-9 py-6" dark width="150px" > cadastrar </v-btn>
+          <v-btn class="px-9 py-6" dark width="150px"> Cadastrar </v-btn>
           <v-spacer />
-          <v-btn class="px-9 py-6" dark width="150px" > proximo </v-btn>
+          <v-btn class="px-9 py-6" dark width="150px"> Entrar </v-btn>
         </div>
       </div>
     </v-container>
-
   </div>
 </template>
 
 <script>
 export default {};
 </script>
+
+<style>
+.imagem-fundo {
+  background: url("../assets/fundo.png") no-repeat center top fixed;
+  background-size: cover !important;
+}
+</style>
