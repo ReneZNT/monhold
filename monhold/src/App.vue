@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app id="app">
     <v-app-bar app dark>
       <div class="d-flex align-center">
         <h1><b class="green--text">Mon</b><b class="white--text">Hold</b></h1>
@@ -7,33 +7,41 @@
           Seu Aplicativo de Gestão Financeira
         </span>
       </div>
-    </v-app-bar>
 
+      <v-spacer />
+
+      <v-btn class="mr-2" to="/" tile text>Login</v-btn>
+      <v-btn to="/cadastro" tile text>Cadastro</v-btn>
+      <v-btn to="/app" tile text>App</v-btn>
+    </v-app-bar>
     <v-main>
-      <!-- <PaginaLogin /> -->
-      <PaginaCadastro />
+      <router-view />
     </v-main>
-    <v-footer dark class="justify-center py-2 caption"
-      ><span>MonHold - 2022</span></v-footer
-    >
+    <v-footer dark class="justify-center py-2 caption">
+      <span>MonHold - 2022</span>
+    </v-footer>
   </v-app>
 </template>
 
-<script>
-/* eslint-disable */
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-import PaginaLogin from "@/components/PaginaLogin.vue";
-import PaginaCadastro from "@/components/PaginaCadastro.vue";
-export default {
-  name: "App",
+nav {
+  padding: 30px;
 
-  components: {
-    PaginaLogin,
-    PaginaCadastro,
-  },
+  a {
+    font-weight: bold;
+    color: #2c3e50;
 
-  data: () => ({
-    //
-  }),
-};
-</script>
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
+</style>
