@@ -25,6 +25,7 @@
       <v-btn v-show="$route.name != 'app'" to="/app" class="mr-1" tile text>
         App
       </v-btn>
+      <v-btn @click="exit()" tile text> Sair </v-btn>
       <v-btn v-show="$route.name == 'app'" to="/" text tile>
         <v-icon>mdi-exit-to-app</v-icon>
       </v-btn>
@@ -37,6 +38,19 @@
     </v-footer>
   </v-app>
 </template>
+
+<script>
+//const { ipcRenderer } = require("electron");
+
+export default {
+  data: () => ({}),
+  methods: {
+    exit() {
+      ipcRenderer.send("exit");
+    },
+  },
+};
+</script>
 
 <style>
 body,
