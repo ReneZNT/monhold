@@ -12,17 +12,10 @@ Assim respectivamente surgiu o nome "Monhold".
 Aplicativo desenvolvido em VueJs e Electron
 
 ## Uso
-Controle/gerenciamento de despesas pessoais
+Controle e gerenciamento de despesas financeiras pessoais
 
 ## Roteiro
-Solicitação a opção de cadastrar de usuario
-RF02- deve conter opção de selecionar o mês 
-RF03- deve possuir a opção de inserir o valor do saldo
-inicial
-RF04- deve possuir a opção de planejamento mensal
-RF05- opção de quantidade de despesas (mês/periodo)
-RF06- opção de quantidade de receitas (entradas)
-RF07- separar por categorias: ex, educação, mercado, vestimentas
+Solicitar a opção de cadastrar de usuario, selecionar a opção do mês desejado, possuir a opção para inserir o valor do saldo inicial (salário/renda, possuir a opção de planejamento mensal, listar a quantidade de despesas do mês/periodo,listar as receitas de entradas e saídas, separar os gastos por categorias como por ex: educação, mercado, vestimentas, empréstimos, etc...
 
 ## Desenvolvedores
 Renê Zanette e Tainara Pohren 
