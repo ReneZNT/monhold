@@ -1,53 +1,52 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, ipcMain, ipcRenderer } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS_DEVTOOLS } from 'electron-devtools-installer'
-import { existsSync } from 'original-fs'
 const isDevelopment = process.env.NODE_ENV !== 'production'
+import path from 'path'
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
-  { scheme: 'app', privileges: { secure: true, standard: true } }
+  { scheme: 'app', privileges: { secure: true, standard: true, stream: true } },
 ])
+
+var win;
 
 async function createWindow() {
   // Create the browser window.
-  const win = new BrowserWindow({
-    fullscreen: true,
-    autoHideMenuBar: true,
-    // width: 1200,
-    // height: 800,
+    win = new BrowserWindow({
+    show: false,
+    height: 1080,
+    width: 1920,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
       nodeIntegration: process.env.ELECTRON_NODE_INTEGRATION,
-      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION
+      contextIsolation: !process.env.ELECTRON_NODE_INTEGRATION,
+      preload: path.join(__dirname, "/preload.js")
     }
   })
 
-
   if (process.env.WEBPACK_DEV_SERVER_URL) {
     // Load the url of the dev server if in development mode
-    await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL)
+    try{
+      await win.loadURL(process.env.WEBPACK_DEV_SERVER_URL);
+    }
+    catch(e){
+      console.log(e + "Erro no load url");
+    }
+   
     //if (!process.env.IS_TEST) win.webContents.openDevTools()
   } else {
     createProtocol('app')
     // Load the index.html when not in development
     win.loadURL('app://./index.html')
   }
-
-  win.webContents.on('did-finish-load', () => {
-    var { title, version } = require('../package.json');
-    win.setTitle(`${title} : ${version}`);
-  })
-
-  win.on('closed', () => {
-    // win = null;
-  })
-
+  win.setMenu(null);
+  win.maximize();
+  win.show();
 }
-
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -79,10 +78,6 @@ app.on('ready', async () => {
   createWindow()
 })
 
-ipcRenderer.on('exit', () => {
-  electron.app.exit(0);
-})
-
 // Exit cleanly on request from parent process in development mode.
 if (isDevelopment) {
   if (process.platform === 'win32') {
@@ -95,5 +90,26 @@ if (isDevelopment) {
     process.on('SIGTERM', () => {
       app.quit()
     })
+  }
+};
+
+ipcMain.on("proBack", (event, args) => {
+  if (args.funcao === "fechar")
+    {
+      fechar();
+    }
+  else if (args.funcao === "print")
+    {
+      app.quit();
+      win.webContents.send("doBack");
+    }
+});
+
+function fechar() {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+  else{
+    app.exit();
   }
 }

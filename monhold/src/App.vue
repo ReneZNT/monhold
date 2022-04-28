@@ -18,8 +18,7 @@
         to="/cadastro"
         class="mr-1"
         tile
-        text
-      >
+        text>
         Cadastro
       </v-btn>
       <v-btn v-show="$route.name != 'app'" to="/app" class="mr-1" tile text>
@@ -40,13 +39,12 @@
 </template>
 
 <script>
-//const { ipcRenderer } = require("electron");
 
 export default {
   data: () => ({}),
   methods: {
     exit() {
-      ipcRenderer.send("exit");
+        window.api.send("proBack", { funcao:"print"});
     },
   },
 };
