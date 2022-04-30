@@ -54,8 +54,8 @@
 
       <v-row class="ma-0 pa-0 white--text">
         <v-col class="col-2 pl-0 pb-0"> <h4>Categoria</h4></v-col>
-        <v-col class="col-5 pl-0 pb-0 green--text"> <h4>Entradas</h4></v-col>
-        <v-col class="col-5 pl-1 pb-0 error--text"> <h4>Saidas</h4></v-col>
+        <v-col class="col-5 pl-0 pb-0 green--text"> <h4>Renda Extra</h4></v-col>
+        <v-col class="col-5 pl-1 pb-0 error--text"> <h4>Gastos</h4></v-col>
         <!-- <v-col class="col-4 pl-0 pb-0 error--text"><h4>Gastos Fixos</h4></v-col> -->
       </v-row>
 
@@ -78,6 +78,7 @@
         </v-col>
         <v-col class="col-5 pl-1">
           <v-text-field
+            v-show="lista.categoria == 'Renda Extra'"
             solo
             hide-details
             danse
@@ -89,6 +90,7 @@
         </v-col>
         <v-col class="col-5 pl-1">
           <v-text-field
+            v-show="lista.categoria != 'Renda Extra' && lista.categoria != ''"
             solo
             hide-details
             danse
@@ -100,6 +102,8 @@
         </v-col>
       </v-row>
       <div class="white--text">
+        <div class="text-center">
+          <v-btn @click="listaEntradaSaida.push({categoria: '', entrada: 0, saida: 0 })" class="primary text-center">Adicionar Coluna de Renda/Gasto</v-btn></div>
         <div>Entrada: R$ {{ somaEntradas }}</div>
         <div>
           Saida: <span class="red--text">R$ -{{ somaSaidas }} </span>
@@ -125,11 +129,11 @@ export default {
     saldoAtual: 0,
 
     listaEntradaSaida: [
-      {categoria: "Educação", entrada: 200, saida: 100 },
-      {categoria: "Transporte", entrada: 300, saida: 200 },
-      {categoria: "Mercado", entrada: 100, saida: 400 },
-      {categoria: "", entrada: 300, saida: 100 },
-      {categoria: "Roupas", entrada: 300, saida: 100 },
+      {categoria: "Educação", entrada: 0, saida: 100 },
+      {categoria: "Transporte", entrada: 0, saida: 200 },
+      {categoria: "Mercado", entrada: 0, saida: 400 },
+      {categoria: "Renda Extra", entrada: 200, saida: 0 },
+      {categoria: "Roupas", entrada: 0, saida: 100 },
     ],
     listaItens: [
       { titulo: " Tela Inicial", icone: "mdi-fast-forward" },
@@ -137,10 +141,11 @@ export default {
       { titulo: " Relatórios", icone: "mdi-dots-horizontal" },
     ],
     categorias: [
+      "Renda Extra", 
       "Educação",
       "Saúde",
       "Transporte",
-      "Roupas",
+      "vestimentas",
       "Mercado",
       "Lanches",
       "Outro",
