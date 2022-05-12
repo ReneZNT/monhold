@@ -3,8 +3,8 @@
     <div style="background-color: #3f3f3f" class="pa-2 pb-8 px-10">
       <div class="d-flex align-center" style="background-color: #3f3f3f">
         <v-btn color="green" dark icon @click.stop="drawer = !drawer">
-          <!-- <v-icon size="35" class="green--text mr-n4 darken-2"> mdi-menu </v-icon> -->
-          <v-icon size="35" class="mb-1"> mdi-calculator </v-icon>
+          <v-icon size="35" class="green--text darken-2"> mdi-menu </v-icon>
+          <!-- <v-icon size="35" class="mb-1"> mdi-calculator </v-icon> -->
         </v-btn>
         <v-spacer />
         <v-navigation-drawer v-model="drawer" dark absolute temporary>
