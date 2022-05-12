@@ -103,7 +103,7 @@
       </v-row>
       <div class="white--text">
         <div class="text-center">
-          <v-btn @click="listaEntradaSaida.push({categoria: '', entrada: 0, saida: 0 })" class="primary text-center">Adicionar Coluna de Renda/Gasto</v-btn></div>
+          <v-btn @click="listaEntradaSaida.push({categoria: ' ', entrada: 0, saida: 0 })" class="primary text-center">Adicionar Coluna de Renda/Gasto</v-btn></div>
         <div>Entrada: R$ {{ somaEntradas }}</div>
         <div>
           Saida: <span class="red--text">R$ -{{ somaSaidas }} </span>
