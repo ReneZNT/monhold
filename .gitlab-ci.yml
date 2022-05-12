@@ -1,0 +1,35 @@
+stages:
+  - Build
+  - Backup
+  - Deploy
+
+
+Build VueJS:
+  stage: Build
+  tags:
+    - macos
+  script:
+    - npm install
+    - npm run electron:build
+  artifacts:
+    paths:
+      - dist_electron/
+  except:
+    - schedules
+
+
+CloudFlare Deploy:
+  stage: Deploy
+  tags:
+    - macos
+  environment:
+    name: Production front-end
+  variables:
+    PROJECT_NAME: monhold-front
+    TARGET: production
+  script:
+    - npx wrangler pages publish --project-name $PROJECT_NAME --branch $TARGET dist_electron/
+  only:
+    - main
+  except:
+    - schedules
