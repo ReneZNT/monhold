@@ -17,7 +17,8 @@
     "start": "vue-cli-service electron:serve",
     "publish": "npm run electron:build -- -p always",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "dist": "electron-builder",
+    "buildlinux": "electron-builder --linux"
   },
   "main": "background.js",
   "dependencies": {
