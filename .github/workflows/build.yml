@@ -16,7 +16,7 @@ jobs:
     - name: install dependencies
       run: npm install
     - name: build        
-      run: npm run buildlinux
+      run: npm run publish
 
   build_on_mac:
     runs-on: macos-latest
