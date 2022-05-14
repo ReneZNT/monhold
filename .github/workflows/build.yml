@@ -15,6 +15,8 @@ jobs:
         node-version: 16
     - name: install dependencies
       run: npm install
+        - name: install snap
+      run: sudo snap install snapcraft --classic 
     - name: build        
       run: npm run publish
 
@@ -27,8 +29,6 @@ jobs:
         node-version: 16
     - name: install dependencies
       run: npm install
-    - name: install snap
-      run: sudo snap install snapcraft --classic 
     - name: build
       run: npm run publish
       
