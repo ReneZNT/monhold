@@ -18,7 +18,7 @@ module.exports = {
        preload: 'src/preload.js',
        build: {
         icon: "src/assets/favicon.ico",
-        appId: "br.edu.unoesc.koalachat",   
+        appId: "br.edu.unoesc.monhold",   
         linux: {
           target: [
             "AppImage",
