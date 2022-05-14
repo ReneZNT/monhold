@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: [
     'vuetify'
   ]
-})
+}) 
 
 module.exports = {
   chainWebpack: config => {
