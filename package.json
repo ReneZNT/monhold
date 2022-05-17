@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "author": {
-    "name": "Tainara Pohren e Renê Zanette"
+    "name": "Tainara Pohren e Renê Zanette",
+    "email": "renezanette@hotmail.com"
   },
   "description": "Sistema de Gestão Financeira",
   "scripts": {
