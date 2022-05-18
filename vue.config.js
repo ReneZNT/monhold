@@ -22,7 +22,7 @@ module.exports = {
         linux: {
           target: [
             "AppImage", 
-            "deb",
+            "deb"
           ],
         },
         publish: [
