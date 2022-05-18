@@ -16,7 +16,7 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
        preload: 'src/preload.js',
-       build: {
+       builderOptions: {
         icon: "src/assets/favicon.ico",
         appId: "br.edu.unoesc.monhold",   
         linux: {
