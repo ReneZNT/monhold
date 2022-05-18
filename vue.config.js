@@ -21,9 +21,9 @@ module.exports = {
         appId: "br.edu.unoesc.monhold",   
         linux: {
           target: [
+            "AppImage",
             "deb",
           ],
-          category: "Utility",
         },
         publish: [
           {
