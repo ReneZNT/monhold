@@ -22,8 +22,6 @@ module.exports = {
         linux: {
           target: [
             "deb",
-            "snap",
-            "rpm"
           ],
           category: "Utility",
         },
