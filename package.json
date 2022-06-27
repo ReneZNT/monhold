@@ -4,9 +4,8 @@
   "private": true,
   "author": {
     "name": "Tainara Pohren e Renê Zanette",
-    "email": "renezanette@hotmail.com"
+    "email": "renezaette@hotmail.com"
   },
-  "description": "Sistema de Gestão Financeira",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -15,16 +14,17 @@
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
     "postuninstall": "electron-builder install-app-deps",
-    "start": "vue-cli-service electron:serve",
-    "publish": "npm run electron:build -- -p always",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
+    "start": "vue-cli-service electron:serve"
   },
   "main": "background.js",
   "dependencies": {
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
     "path-browserify": "^1.0.1",
+    "v-mask": "^2.3.0",
+    "v-money": "^0.8.1",
     "vue": "^2.6.14",
+    "vue-cookies": "^1.8.1",
     "vue-router": "^3.5.1",
     "vuetify": "^2.6.0"
   },

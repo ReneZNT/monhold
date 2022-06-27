@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: [
     'vuetify'
   ]
-}) 
+})
 
 module.exports = {
   chainWebpack: config => {
@@ -15,22 +15,23 @@ module.exports = {
   publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
   pluginOptions: {
     electronBuilder: {
-       preload: 'src/preload.js',
-       builderOptions: {
+      customFileProtocol: './',
+      build: {
         icon: "src/assets/favicon.ico",
-        appId: "br.edu.unoesc.monhold",   
+        appId: "br.edu.unoesc.monhold",
         linux: {
           target: [
-            "AppImage", 
+            "AppImage",
             "deb"
-          ],
+          ]
         },
         publish: [
           {
             provider: "github"
           }
         ]
-      }
+      },
+      preload: 'src/preload.js'
     },
   }
 }
