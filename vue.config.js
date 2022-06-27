@@ -7,7 +7,7 @@ module.exports = defineConfig({
 
 module.exports = {
   chainWebpack: config => {
-    config.externals({ path: 'path', fs: 'fs' });
+    config.externals({ path: 'path', fs: 'fs', ip: 'ip' });
   }
 };
 
@@ -16,14 +16,33 @@ module.exports = {
   pluginOptions: {
     electronBuilder: {
       customFileProtocol: './',
-      build: {
-        icon: "src/assets/favicon.ico",
-        appId: "br.edu.unoesc.monhold",
+      builderOptions: {
+        productName: 'monhold',
+        appId: "br.edu.unoesc.monhold",   
         linux: {
           target: [
             "AppImage",
             "deb"
-          ]
+          ],
+          asar: false,
+        },
+        win: {
+          target: [
+            "nsis",
+            "portable"
+          ],
+          asar: false,
+        },
+        mac: {
+          target: [
+            "dmg",
+            "zip"
+          ],
+          asar: false,
+        },
+        "nsis": {
+          "oneClick": false,
+          "allowToChangeInstallationDirectory": true,
         },
         publish: [
           {
@@ -31,7 +50,7 @@ module.exports = {
           }
         ]
       },
-      preload: 'src/preload.js'
+      preload: './src/preload.js'
     },
   }
 }
