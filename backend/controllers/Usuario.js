@@ -4,13 +4,7 @@ const dbes = require("../config/estatico");
 
 class Usuario {
 
-  async getUsuarios() {
-    let results =
-      await db.query(`SELECT usu_id, nome, email, senha FROM usuario`).
-        catch(console.log);
-    return results.rows;
-  }
-
+  //CADASTRAR USUÁRIO
   async cadastrarUsuario(nome, email, senha) {
     let getemail = await db.query(`SELECT * FROM usuario where email = $1`, [email]).catch(console.log);
     if (getemail.rowCount > 0) return 10;
@@ -27,7 +21,7 @@ class Usuario {
       return results.rows;
     }
   }
-
+  //VALIDAÇÃO DE LOGIN PARA ACESSO DO USUÁRIO AS INFORMAÇÕES
   async validaLogin(tokenDeAcesso, usu_id) {
     if (tokenDeAcesso && usu_id) {
       try {
@@ -41,7 +35,7 @@ class Usuario {
       }
     } else return false;
   }
-
+  //CONSULTA NOME E EMAIL DO USUÁRIO
   async getDadosDeUsuario(usu_id) {
     if (usu_id) {
       try {
@@ -54,7 +48,7 @@ class Usuario {
       }
     } else return false;
   }
-
+  //VERIFICA EMAIL E SENHA DO LOGIN E GERA TOKEN DE ACESSO ÚNICO
   async login(email, senha) {
     let getemail = await db.query(`SELECT * FROM usuario where email = $1`, [email]).catch(console.log);
     if (getemail.rowCount == 0) return 10;
@@ -76,7 +70,6 @@ class Usuario {
         catch(console.log);
       let results = await db.query(`select * from token_de_acesso tda where usu_id = $1`, [userData.rows[0].usu_id]).
         catch(console.log);
-        console.log('Teste3' + getemail.rows[0].nome);
       return results.rows;
     } else return userData;
   }

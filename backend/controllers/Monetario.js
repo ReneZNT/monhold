@@ -16,6 +16,7 @@ class Monetario {
     VALUES ($1, $2, $3, $4, $5, $6, false)`, [categoria, valor, mes, ano, usu_id, descricao]).catch(console.log);
     return true;
   }
+
   //SALARIO 
   async cadastrarSalario(valor, ano, mes, usu_id) {
     let jaCadastrado = await db.query(`SELECT * FROM registro where usu_id = $1 and ano = $2 and mes = $3 and salario = true`, [usu_id, ano, mes]).catch(console.log); 
@@ -27,6 +28,7 @@ class Monetario {
       return true;
     }
   }
+
   //GASTO TEMPORARIO
   async cadastrarGastoTemporario(categoria, valor, mes, ano, mesfinal, anofinal, usu_id) { 
     await db.query(`INSERT INTO registro (categoria_id, VALOR, mes, ano, mes_final, ano_final, USU_ID, entrada, gasto_temporario)
@@ -61,34 +63,35 @@ class Monetario {
   }
 
   //===CONSULTA DE REGISTROS===
+  //CONSULTAR ENTRADAS
   async getEntradas(usu_id, ano, mes) {
     let entradas =
       await db.query(`SELECT registro_ID, categoria_id, VALOR, ano, mes FROM registro WHERE USU_ID = $1 AND ano = $2 and mes = $3 and salario = false and entrada = true and gasto_temporario = false`, [usu_id, ano, mes]).
         catch(console.log);
     return entradas.rows;
   }
-
+  //TODOS OS REGISTROS 
   async getRegistros(usu_id, ano, mes) {
     let registros =
       await db.query(`SELECT registro_ID, categoria_id, VALOR, ano, mes, entrada, descricao FROM registro WHERE USU_ID = $1 AND ano = $2 and mes = $3 and salario = false and gasto_temporario = false order by entrada desc`, [usu_id, ano, mes]).
         catch(console.log);
     return registros.rows;
   }
-
+  //CONSULTAR OS GASTOS TEMPORÁRIOS
   async getGastoTemporario(usu_id, ano, mes) {
     let gastoTemporario = await db.query("select * from registro r where usu_id = $1 and TO_DATE(concat(ano_final, mes_final),'YYYYMM') >= TO_DATE(concat('"+ ano + "', '"+ mes +"'),'YYYYMM') and TO_DATE(concat('" + ano + "', '" + mes +"'),'YYYYMM') >= TO_DATE(concat(ano, mes),'YYYYMM') and gasto_temporario = true and entrada = false", [usu_id]).catch(console.log);
     let gastoTemporarioFinalNulo = await db.query("select * from registro r where usu_id = $1 and ano_final is null and TO_DATE(concat('" + ano + "', '" + mes +"'),'YYYYMM') >= TO_DATE(concat(ano, mes),'YYYYMM') and gasto_temporario = true and entrada = false", [usu_id]).catch(console.log);
     gastoTemporario.rows = gastoTemporario.rows.concat(gastoTemporarioFinalNulo.rows);
     return gastoTemporario.rows;
   }
-
+  //CONSULTAR SAÍDAS
   async getSaidas(usu_id, ano, mes) {
     let saidas =
       await db.query(`SELECT registro_ID, categoria_id, VALOR, ano, mes FROM registro WHERE USU_ID = $1 AND ano = $2 and mes = $3 and salario = false and entrada = false and gasto_temporario = false`, [usu_id, ano, mes]).
         catch(console.log);
     return saidas.rows;
   }
-
+  //CONSULTAR SALÁRIO
   async getSalario(ano, mes, usu_id) {
     let salario = await db.query(`SELECT * FROM registro where usu_id = $1 and ano = $2 and mes = $3 and salario = true`, [usu_id, ano, mes]).catch(console.log);
     return salario.rows;

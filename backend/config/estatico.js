@@ -5,22 +5,7 @@ const Usuario = require('../controllers/Usuario');
 const Monetario = require('../controllers/Monetario');
 const Publico = require('../controllers/Publico');
 
-// let db = [
-//   { '1': { Mensagem: 'Banco funcionando' } },
-//   { '2': { nome: 'teste', idade: '0' } },
-// ]
-
-// let categorias = [
-//   "Renda Extra",
-//   "Educação",
-//   "Saúde",
-//   "Transporte",
-//   "vestimentas",
-//   "Mercado",
-//   "Lanches",
-//   "Outro",
-// ]
-
+//VUNÇÃO QUE VALIDA O ACESSO DO USUÁRIO AS INFORMAÇÕES
 acesso = async function (req) {
   var validacao = await new Usuario().validaLogin(req.headers.authorization, req.params.usu_id);
   return validacao;
