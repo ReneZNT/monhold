@@ -7,15 +7,7 @@
           Seu Aplicativo de Gestão Financeira
         </span>
       </div>
-      <v-spacer />
-
-      <v-btn
-        v-show="$route.name == 'cadastro'"
-        to="/"
-        class="mr-1"
-        tile
-        text
-      >
+      <v-btn v-show="$route.name == 'cadastro'" to="/" class="mr-1" tile text>
         Login
       </v-btn>
       <v-btn
@@ -23,13 +15,9 @@
         to="/cadastro"
         class="mr-1"
         tile
-        text
-      >
+        text>
         Cadastrar
       </v-btn>
-      <!-- <v-btn v-show="$route.name != 'app'" to="/app" class="mr-1" tile text>
-        App
-      </v-btn> -->
       <v-btn @click="DialogDeFechar()" tile text color="error"
         ><b>Fechar App</b>
       </v-btn>
@@ -46,8 +34,8 @@
     </v-footer>
 
     <template>
-      <DialogDeAlerta ref="dialogDeAlerta"/>
-      <DialogConfirmarSair ref="dialogDeFechar"/>
+      <DialogDeAlerta ref="dialogDeAlerta" />
+      <DialogConfirmarSair ref="dialogDeFechar" />
     </template>
   </v-app>
 </template>
@@ -60,11 +48,9 @@ export default {
   name: "app",
   components: {
     DialogDeAlerta,
-    DialogConfirmarSair
-},
-  data: () => ({
-    
-  }),
+    DialogConfirmarSair,
+  },
+  data: () => ({}),
   methods: {
     DialogDeFechar() {
       this.$refs.dialogDeFechar.exibir();
@@ -77,10 +63,17 @@ export default {
       this.$cookies.remove("id");
       this.$router.push("/");
     },
+    checkInvalidRoute() {
+      if (this.$route.name != "login" ||
+        this.$route.name != "cadastro" ||
+        this.$route.name != "app")
+        this.$router.push("/");
+    },
   },
   created() {
+    this.checkInvalidRoute();
     Vue.prototype.$mensagem = this.mensagem;
-  }
+  },
 };
 </script>
 
