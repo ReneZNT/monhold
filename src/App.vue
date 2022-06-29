@@ -7,6 +7,7 @@
           Seu Aplicativo de Gestão Financeira
         </span>
       </div>
+      <v-spacer/>
       <v-btn v-show="$route.name == 'cadastro'" to="/" class="mr-1" tile text>
         Login
       </v-btn>

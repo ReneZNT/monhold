@@ -305,7 +305,7 @@ export default {
     },
 
     alterarRegistro(registro) {
-      if (this.tempoIndeterminado = true){
+      if (this.tempoIndeterminado == true){
       registro.ano_final = null;
       registro.mes_final = null;
       }

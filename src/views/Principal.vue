@@ -8,6 +8,7 @@
         <!-- <v-btn color="green" dark icon @click.stop="drawer = !drawer">
           <v-icon size="35" class="green--text darken-2"> mdi-menu </v-icon>
         </v-btn> -->
+        <v-btn icon @click="refreshPage()"><v-icon color="grey">mdi-refresh</v-icon></v-btn>
         <v-spacer />
         <v-navigation-drawer v-model="drawer" dark absolute temporary>
           <v-list-item>
@@ -130,8 +131,6 @@
                 ? converterParaDinheiro(somaSaidas)
                 : r.id == 3
                 ? converterParaDinheiro(saldoAtual)
-                : r.id == 4
-                ? converterParaDinheiro(planejamento)
                 : ""
             }}</b>
           </v-card>
@@ -369,11 +368,6 @@ export default {
         cor: "blue darken-4",
       },
       {
-        id: 4,
-        titulo: "Pranejamento",
-        cor: "orange darken-3",
-      },
-      {
         id: 1,
         titulo: "Renda Total",
         cor: "blue darken-1",
@@ -400,6 +394,9 @@ export default {
     ],
   }),
   methods: {
+    refreshPage() {
+      window.location.reload();
+    },
     visualizar(registro){
       this.$refs.visualizar.abrir(this.mes, this.ano, {...registro})
     },
